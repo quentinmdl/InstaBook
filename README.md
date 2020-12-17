@@ -10,66 +10,8 @@ L'objectif est de concevoir les fichiers de migrations, les factories nécessair
 
 Ce projet pourra être étendu par la suite. 
 
-### Récupération du projet et préparation de votre dépôt pour le rendu 
+### Compte Rendu
 
-1. Cloner le dépôt 
-2. Rentrez dans le dépot : `cd instabook`
-3. "Dégiter" le dépôt : `rm -rf .git`
-4. Initialiser git : `git init`
-5. Créez votre dépôt de rendu sur git, sans README, ni aucune autre case cochée
-6. Suivez les instructions indiquées sur git (`git add .`, `git commit -m"initial commit`, `git remote add origin url_de_votre_depot`)
-7. Vous pouvez (mais n'êtes pas obligé) rajouter comme second dépôt distant le dépôt actuel : `git remote add prof )
-8. Faites votre premier push : `git push -u  origin master`. 
+Bonjour, j'espère que vous allez bien !
 
-### Création d'une base de données, 
-
-Vous aurez à créer une base de données dans MySQL : 
-`sudo mysql`
-Une fois dans mysql 
-
-```sql 
-CREATE DATABASE instabook;
- -- CREATE USER  laravel@localhost IDENTIFIED BY 'L4R4V3l' ; --  À faire si vous n'avez pas déjà un utilisateur autre que root
- -- On donne les droit à l'utilisateur
- GRANT ALL ON instabook.* TO laravel@localhost; 
-```
-
-Copier le fichier `.env.example` en `.env` : 
-```sh 
-cp .env.example .env
-```
-Et remplissez les informations propres à la BDD. 
-
-
-Installer le projet à l'aide de composer : 
-```sh
-composer install
-```
-
-Créer une clé pour le .env
-```sh
-php artisan key:generate
-```
-
-À vous de jouer !!!
-
-
-### Les jeux de tests
-Afin de faciliter le développement, les jeux de tests sont numérotés pour être passé par étapes. Un `seeder` a été fourni pour remplir la base de donnée avec un jeu de donnée valide. pour que celui ci s'execute bien, vous aurez besoin des factories (fournies), ainsi que des modèles. 
-Vous aurez aussi besoin d'avoir créé les modèles et vérifié que chacun à bien le trait hasFactory (`use hasFactory;`).
-Le modèle Photo est fourni avec une relation nécessaire pour le remplissage de la base. 
-
-
-Ainsi la première étape concernent simplement la structure de la base données, sans prendre en compte les contraintes de clés étrangères, ni d'unicité. Il y a besoin des fichiers de migration, ainsi que des factory qui sont fournies pour cette étape. 
-
-Si vous rencontrez des problèmes dès cette étape, essayer de réinitialiser la base de données et les jeux de test avec la commande suivante : 
-```sh
-php artisan migrate:fresh --seed
-```
-
-Ensuite, il est nécessaire de coder les relations dans les modèles, pour pouvoir tester les contraintes d'unicité et de clés étrangères, dans leur forme simplifiées, c’est-à-dire sans relations complexes. 
-
-Enfin, il faudra intégrer certaines règles de gestions, telles que l'appartenance à groupe d'une photo pour être mentionné comme apparaissant sur la photo. 
-  - Un commentaire ne peut être que fait que par un utilisateur qui appartient au même groupe que la photo
-  - La photo n'est créée que si son propriétaire appartient bien au même groupe que la photo
-  - Un utilisateur ne peut être ajouté à une photo que si il est dans le même groupe que la photo
+Dans l'ensemble, j'ai pas eu de difficulté à réalisé ce TP-ci dans sa globalité, juste eu un petit trou de mémoire sur la partie des tests 'E_ModelCreationRulesTest' concernant  'testCommentIsNotCreatedByUserWhoDoesNotBelongToSameGroup' par exemple ou j'ai dû faire quelques recherches pour se souvenir quoi faire, où et l'utilité, construction de la fonction 'booted'.
